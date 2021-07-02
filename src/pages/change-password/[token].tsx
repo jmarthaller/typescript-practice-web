@@ -1,27 +1,29 @@
 import { Box, Button } from '@chakra-ui/react';
 import { Formik, Form } from 'formik';
 import { NextPage } from 'next';
-// import router from 'next/router';
+import { useRouter } from 'next/router';
 import React from 'react'
 import { InputField } from '../../components/InputField';
 import { Wrapper } from '../../components/Wrapper';
-// import { toErrorMap } from '../../utils/toErrorMap';
+import { useChangePasswordMutation } from '../../generated/graphql';
+import { toErrorMap } from '../../utils/toErrorMap';
 
 
 const ChangePassword: NextPage<{token: string}> = ({ token }) => {
+    const router = useRouter();
+    const [, changePassword] = useChangePasswordMutation();
         return (
-            
             <Wrapper variant="small">
                 <div>Token is: {token}</div>;
                 <Formik 
                 initialValues={{ newPassword: ""}} 
-                onSubmit={async () => {              // might need ---------- values, {setErrors}
-                    // const response = await login(values);
-                    // if (response.data?.login.errors) {
-                    //     setErrors(toErrorMap(response.data.login.errors));
-                    // } else if (response.data?.login.user) {
-                    //     router.push("/");
-                    // }
+                onSubmit={async (values, {setErrors}) => {    
+                    const response = await changePassword({newPassword: values.newPassword, token});
+                    if (response.data?.changePassword.errors) {
+                        setErrors(toErrorMap(response.data.changePassword.errors));
+                    } else if (response.data?.changePassword.user) {
+                        router.push("/");
+                    }
                 }}>
                     {({isSubmitting}) => (
                         <Form>
