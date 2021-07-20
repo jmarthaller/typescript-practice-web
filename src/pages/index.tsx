@@ -1,4 +1,4 @@
-import { Box, Heading, Link, Stack, Text } from "@chakra-ui/react";
+import { Box, Button, Flex, Heading, Link, Stack, Text } from "@chakra-ui/react";
 import { withUrqlClient } from "next-urql";
 import React from "react";
 import { Layout } from "../components/Layout";
@@ -8,31 +8,42 @@ import NextLink from "next/link";
 // import { title } from "process";
 
 const Index = () => {
-  const [{ data }] = usePostsQuery({
+  const [{ data, fetching }] = usePostsQuery({
     variables: {
       limit: 10
     }
   });
+
+  if (!fetching && !data) {
+    return <div>query failed</div>;
+  }
+
   return (
     <Layout>
       <div>
-        <NextLink href="/create-post">
-          <Link>Create Post</Link>
-        </NextLink>
+        <Flex>
+          <Heading align="center">Portfolio Page</Heading>
+          <NextLink href="/create-post">
+            <Link ml="auto">Create Post</Link>
+          </NextLink>
+        </Flex>
         <br />
-        {!data ? (
+        {!data && fetching ? (
           <div>Loading posts</div>
         ) : (
           <Stack spacing={8}>
-            {data.posts.map((post) => (
+            {data!.posts.map((post) => (
             <Box key={post.id} p={5} shadow="md" borderWidth="1px">
               <Heading fontSize="xl">{post.title}</Heading>
-              <Text mt={4}>{post.text.slice(0, 50)}</Text>
+              <Text mt={4}>{post.textSnippet}</Text>
             </Box>
           ))}
           </Stack>
         )}
-      </div>
+          </div>
+          {data ? <Flex>
+            <Button isLoading={fetching} m="auto" my={4}>Load More Posts</Button>
+          </Flex> : null}
     </Layout>
   );
 };
