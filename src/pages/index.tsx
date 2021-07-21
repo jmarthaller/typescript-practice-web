@@ -5,7 +5,6 @@ import { Layout } from "../components/Layout";
 import { usePostsQuery } from "../generated/graphql";
 import { createUrqlClient } from "../utils/createUrqlClient";
 import NextLink from "next/link";
-// import { title } from "process";
 
 const Index = () => {
   const [variables, setVariables] = useState({
