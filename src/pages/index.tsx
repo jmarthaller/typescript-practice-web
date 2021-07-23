@@ -5,7 +5,7 @@ import { Layout } from "../components/Layout";
 import { usePostsQuery } from "../generated/graphql";
 import { createUrqlClient } from "../utils/createUrqlClient";
 import NextLink from "next/link";
-// import { UpvoteSection } from "../components/UpvoteSection";
+import { UpvoteSection } from "../components/UpvoteSection";
  
 
 const Index = () => {
@@ -37,7 +37,7 @@ const Index = () => {
           <Stack spacing={8}>
             {data!.posts.posts.map((post) => (
             <Flex key={post.id} p={5} shadow="md" borderWidth="1px">
-              {/* <UpvoteSection /> */}
+              <UpvoteSection post={post} />
               <Box>
                 <Heading fontSize="xl">{post.title}</Heading> 
                 <Text>Posted by {post.creator.username}</Text>
