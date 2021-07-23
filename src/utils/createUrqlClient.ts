@@ -28,8 +28,8 @@ export const errorExchange: Exchange =
     return (_parent, fieldArgs, cache, info) => {
       const { parentKey: entityKey, fieldName } = info;
   
-      const allFields = cache.inspectFields(entityKey);
-      const fieldInfos = allFields.filter((info) => info.fieldName === fieldName);
+        const allFields = cache.inspectFields(entityKey);
+        const fieldInfos = allFields.filter((info) => info.fieldName === fieldName);
       const size = fieldInfos.length;
       if (size === 0) {
         return undefined;
@@ -129,6 +129,13 @@ export const createUrqlClient = (ssrExchange: any) => ({
       },
       updates: {
         Mutation: {
+          createPost: (_result, _args, cache, _info) => {
+            const allFields = cache.inspectFields('Query');
+            const fieldInfos = allFields.filter((info) => info.fieldName === 'posts');
+            fieldInfos.forEach((fi) => {
+              cache.invalidate('Query', 'posts', fi.arguments || {})
+            })
+          },
           logout: (_result, _args, cache, _info) => {
             betterUpdateQuery<LogoutMutation, MeQuery>(
               cache,
