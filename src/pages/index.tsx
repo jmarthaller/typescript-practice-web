@@ -7,7 +7,6 @@ import { createUrqlClient } from "../utils/createUrqlClient";
 import NextLink from "next/link";
 import { UpvoteSection } from "../components/UpvoteSection";
  
-
 const Index = () => {
   const [variables, setVariables] = useState({
     limit: 15, 
