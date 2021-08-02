@@ -11,7 +11,8 @@ import { betterUpdateQuery } from "./betterUpdateQuery";
 import { cacheExchange, Resolver } from "@urql/exchange-graphcache";
 import { pipe, tap } from "wonka";
 import Router from "next/router";
-import gql from 'graphql-tag';
+// import gql from 'graphql-tag';
+import { gql } from '@urql/core';
 
 export const errorExchange: Exchange =
   ({ forward }) =>
@@ -132,25 +133,30 @@ export const createUrqlClient = (ssrExchange: any) => ({
       updates: {
         Mutation: {
           vote: (_result, args, cache, _info) => {
-            const {postId, value} = args as VoteMutationVariables;
+            const { postId, value } = args as VoteMutationVariables;
             const data = cache.readFragment(
               gql`
               fragment _ on Post {
                 id
                 points
+                voteStatus 
               }
               `,
               { id: postId } as any
             );
             if (data) {
-              const newPoints = (data.points as number) + value;
+              if (data.voteStatus === value) {
+                return;
+              }
+              const newPoints = (data.points as number) + ((!data.voteStatus ? 1 : 2) * value);
               cache.writeFragment(
                 gql`
                 fragment __ on Post {
                   points
+                  voteStatus
                 }
                 `,
-                { id: postId, points: newPoints } as any
+                { id: postId, points: newPoints, voteStatus: value } as any
               );
             }
           }, 
