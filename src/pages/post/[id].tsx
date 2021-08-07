@@ -25,5 +25,5 @@ export const Post = ({}) => {
   }
   return <Layout>{data?.post?.text}</Layout>;
 };
-
+// test git
 export default withUrqlClient(createUrqlClient, { ssr: true })(Post);
