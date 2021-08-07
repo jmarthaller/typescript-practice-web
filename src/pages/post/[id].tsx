@@ -19,7 +19,7 @@ export const Post = ({}) => {
   if (fetching) {
     return (
       <Layout>
-        <div>Loading...</div>
+        <div>loading...</div>
       </Layout>
     );
   }
