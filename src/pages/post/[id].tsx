@@ -3,7 +3,6 @@ import { useRouter } from "next/router";
 import React from "react";
 import { Layout } from "../../components/Layout";
 import { usePostQuery } from "../../generated/graphql";
-// import React from 'react'
 import { createUrqlClient } from "../../utils/createUrqlClient";
 
 export const Post = ({}) => {
