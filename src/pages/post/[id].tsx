@@ -26,6 +26,3 @@ export const Post = ({}) => {
 };
 
 export default withUrqlClient(createUrqlClient, { ssr: true })(Post);
-
-
-
