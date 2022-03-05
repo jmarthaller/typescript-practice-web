@@ -1,8 +1,8 @@
 fragment StandardUserResponse on UserResponse {
-    errors {
-      ...StandardError
-    }
-    user {
-      ...StandardUser
-    }
+  errors {
+    ...StandardError
+  }
+  user {
+    ...StandardUser
+  }
 }
