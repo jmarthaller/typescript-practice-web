@@ -40,13 +40,13 @@ export const NavBar: React.FC<NavBarProps> = ({}) => {
           isLoading={logoutFetching}
           variant="link"
         >
-          Logout
+          LogOut
         </Button>
       </Flex>
     );
   }
   return (
-    <Flex zIndex={1} position="sticky" top={0} bg={'#ED8936'} p={4} ml={"auto"}>
+    <Flex zIndex={1} position="sticky" top={0} bg={"#ED8936"} p={4} ml={"auto"}>
       <Box ml={"auto"}>{body}</Box>
     </Flex>
   );
