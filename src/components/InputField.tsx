@@ -14,6 +14,11 @@ type InputFieldProps = React.InputHTMLAttributes<HTMLInputElement> & {
   textarea?: boolean;
 };
 
+function convertInputToTextArea(InputOrTextArea: any) {
+  InputOrTextArea = Textarea;
+  return InputOrTextArea;
+}
+
 export const InputField: React.FC<InputFieldProps> = ({
   label,
   textarea,
@@ -34,7 +39,3 @@ export const InputField: React.FC<InputFieldProps> = ({
   );
 };
 
-function convertInputToTextArea(InputOrTextArea: any) {
-  InputOrTextArea = Textarea;
-  return InputOrTextArea;
-}
