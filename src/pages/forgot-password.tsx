@@ -32,14 +32,7 @@ const ForgotPassword: React.FC<{}> = ({}) => {
                 label="Email"
                 type="email"
               />
-              {/* <Box>
-                                    <NextLink href="/forgot-password">
-                                        {" "}
-                                        <Link>
-                                            Forgot Password?
-                                        </Link>
-                                    </NextLink>
-                                </Box> */}
+              {}
               <Box mt={2}>
                 <Button
                   type="submit"
