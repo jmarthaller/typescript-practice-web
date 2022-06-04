@@ -23,7 +23,7 @@ const ForgotPassword: React.FC<{}> = ({}) => {
       >
         {({ isSubmitting }) =>
           complete ? (
-            <Box>We've sent you an email</Box>
+            <Box>We sent you an email</Box>
           ) : (
             <Form>
               <InputField
