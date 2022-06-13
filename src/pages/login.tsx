@@ -45,14 +45,7 @@ const Login: React.FC<{}> = ({}) => {
               />
             </Box>
             <Box mt={4}>
-              {/* <Box>
-                                    <NextLink href="/forgot-password">
-                                        {" "}
-                                        <Link>
-                                            Forgot Password?
-                                        </Link>
-                                    </NextLink>
-                                </Box> */}
+              {}
               <Button
                 type="submit"
                 variantcolor="teal"
