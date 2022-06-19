@@ -16,7 +16,6 @@ import { betterUpdateQuery } from "./betterUpdateQuery";
 import { cacheExchange, Resolver } from "@urql/exchange-graphcache";
 import { pipe, tap } from "wonka";
 import Router from "next/router";
-// import gql from 'graphql-tag';
 import { gql } from "@urql/core";
 import { isServer } from "./isServer";
 
