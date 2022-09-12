@@ -60,7 +60,7 @@ const ChangePassword: NextPage = () => {
                 variantcolor="teal"
                 isLoading={isSubmitting}
               >
-                Enter New Password
+                New Password
               </Button>
             </Box>
           </Form>
