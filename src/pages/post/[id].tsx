@@ -18,7 +18,7 @@ export const Post = ({}) => {
   if (fetching) {
     return (
       <Layout>
-        <div>loading...</div>
+        <div>Loading...</div>
       </Layout>
     );
   }

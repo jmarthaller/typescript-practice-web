@@ -68,7 +68,7 @@ const Index = () => {
             m="auto"
             my={4}
           >
-            Load More Posts
+            Load More
           </Button>
         </Flex>
       ) : null}

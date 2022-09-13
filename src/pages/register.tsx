@@ -51,7 +51,7 @@ const Register: React.FC<registerProps> = ({}) => {
                 variantcolor="teal"
                 isLoading={isSubmitting}
               >
-                Register User
+                Sign Up
               </Button>
             </Box>
           </Form>
