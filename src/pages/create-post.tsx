@@ -1,7 +1,7 @@
+import React from "react";
 import { Box, Button } from "@chakra-ui/react";
 import { Formik, Form } from "formik";
 import { withUrqlClient } from "next-urql";
-import React from "react";
 import { InputField } from "../components/InputField";
 import { createUrqlClient } from "../utils/createUrqlClient";
 import { useRouter } from "next/router";
